@@ -46,5 +46,7 @@ SECTIONS {
          * might not be needed after all.
          */
         *(.got)
+        *(.eh_frame)
+        *(.eh_frame_hdr)
     }
 }

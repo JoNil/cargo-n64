@@ -89,6 +89,7 @@ pub(crate) fn run(args: &cli::BuildArgs, verbose: usize) -> Result<CargoArtifact
         .arg("+nightly")
         .arg("build")
         .arg("-Z=build-std=core,alloc")
+        .arg("-C code-model=large")
         .arg("--message-format=json-render-diagnostics")
         .arg(format!("--target={}", args.target.as_ref().unwrap()))
         .args(build_args)

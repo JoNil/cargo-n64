@@ -86,7 +86,7 @@ pub(crate) fn run(args: &cli::BuildArgs, verbose: usize) -> Result<CargoArtifact
     };
 
     let output = Command::new("cargo")
-        .arg("+nightly")
+        .arg("+nightly-2023-03-08")
         .arg("build")
         .arg("-Z=build-std=core,alloc")
         .arg("--message-format=json-render-diagnostics")

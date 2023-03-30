@@ -1,5 +1,4 @@
 #![deny(clippy::all)]
-#![feature(backtrace)]
 #![forbid(unsafe_code)]
 
 mod cargo;

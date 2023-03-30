@@ -57,15 +57,6 @@ pub enum BuildError {
     CreateFileError(String),
 }
 
-fn print_backtrace(error: &dyn std::error::Error) {
-    if let Some(backtrace) = error.backtrace() {
-        let backtrace = backtrace.to_string();
-        if !backtrace.is_empty() {
-            eprintln!("{}", backtrace);
-        }
-    }
-}
-
 pub fn handle_errors<E, R, T>(run: R, args: &[T])
 where
     E: std::error::Error + ErrorIter,
@@ -77,11 +68,9 @@ where
     match run(args) {
         Err(e) => {
             eprintln!("{} {}", "error:".red(), e);
-            print_backtrace(&e);
 
             for cause in e.chain().skip(1) {
                 eprintln!("{} {}", "caused by:".bright_red(), cause);
-                print_backtrace(cause);
             }
 
             process::exit(1);
